@@ -1,0 +1,21 @@
+/* Layout */
+html,
+body {
+	height: 100%;
+}
+.page-wrap {
+	min-height: 100%;
+	position: relative;
+}
+
+.nav-item {
+	font-size: 35px;
+	
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+	}
+.site-content {
+	padding-bottom: 70px;
+	@media (max-width: 768px) {
+		padding-bottom: 200px;
+	}
+}

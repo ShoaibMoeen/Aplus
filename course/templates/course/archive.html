@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load course %}
+
+{% block title %}{% trans "Course archive" %} | {{ block.super }}{% endblock %}
+{% block view_tag %}archive{% endblock %}
+
+{% block content %}
+  <div class="frontpage-panel">
+    <div class="page-header">
+        <h1>{% trans "Course archive" %}
+    </div>
+    {% regroup instances by starting_time|date:"Y" as instances_by_year %}
+
+    {% for year, year_instances in instances_by_year %}
+      <section class="frontpage frontpage-section">
+        <div class="section-heading">
+          <h2>{{ year }}</h2>
+        </div>
+        <div class="cards">
+          {% include "course/_course_cards.html" with instances=year_instances condensed=True %}
+        </div>
+      </section> 
+    {% endfor %}
+  </div>
+{% endblock %}

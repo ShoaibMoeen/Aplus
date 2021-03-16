@@ -1,0 +1,33 @@
+{% load i18n %}
+{% block exercisecontent %}
+
+    {# Content goes here #}
+    <h3 class="ec-title">{{ exercisecollection_data.title }}:</h3>
+    <ul style="list-style-type: disc">
+    {% for exercise_data in exercisecollection_data.exercises %}
+        <li class="ec-list">
+            <a href={{ exercise_data.url }} >
+                {{ exercise_data.title }}
+            </a>
+            <ul style="list-style-type: none">
+                <li>
+                    <p style="font-weight: bold;font-style: italic">
+                    {% trans "Current score" %}: {{ exercise_data.user_points }}
+                    / {{ exercise_data.max_points }}
+                    </p>
+                </li>
+            </ul>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <p style="font-weight: bold;font-style: italic">
+      {% trans "Total score" %}: {{exercisecollection_data.user_total_points}}
+      / {{exercisecollection_data.target_max_points}}
+    </p>
+    <p style="font-weight: bold;font-style: italic">
+      {% trans "Score on this course"%}: {{exercisecollection_data.ec_points}}
+      / {{exercisecollection_data.ec_max_points}}
+    </p>
+
+{% endblock %}

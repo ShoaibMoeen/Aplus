@@ -1,0 +1,34 @@
+{% extends "course/course_base.html" %}
+{% load i18n %}
+{% load course %}
+{% load bootstrap %}
+{% load static %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static 'js/ajax_search_select.js' %}"></script>
+{% endblock scripts %}
+{% block title %}{% trans "Enroll students" %} | {{ block.super }}{% endblock %}
+{% block view_tag %}participants,enroll-students{% endblock %}
+
+{% block breadcrumblist %}
+{{ block.super }}
+<li><a href="{{ instance|url:'participants' }}">{% trans "Participants" %}</a></li>
+<li class="active">{% trans "Enroll students" %}</li>
+{% endblock %}
+
+{% block columns %}
+<div class="col-md-12">
+  <p>
+  {% trans "Teacher may manually enroll students in the course here. Enrollment time and audience restrictions do not apply here. If the course has an enrollment exercise, the manually enrolled students are not required to submit anything." %}
+  </p>
+  <form method="post" class="well form">
+    {% csrf_token %}
+    <legend>{% trans "Enroll students in the course" %}</legend>
+    {{ form|bootstrap }}
+    <button type="submit" class="aplus-button--default aplus-button--md">
+      {% trans "Enroll students" %}
+    </button>
+  </form>
+</div>
+{% endblock %}
