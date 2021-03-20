@@ -1,17 +1,20 @@
 from django.conf import settings
-from django.contrib.auth.models import User, AnonymousUser
+from django.contrib.auth.models import User, AbstractUser, AnonymousUser
 from django.urls import reverse
 from django.db import models
 from django.db.models.signals import post_save
 from django.utils.functional import cached_property
 from rest_framework.authtoken.models import Token
-
+import uuid
 
 class UserProfileManager(models.Manager):
 
     def get_queryset(self):
         return super().get_queryset().select_related("user")
 
+# class CustomUser(AbstractUser):
+#        id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True,primary_key=True)
+#        phone_no= models.CharField(max_length=20, default="")
 
 class UserProfile(models.Model):
     """
@@ -36,6 +39,8 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     language = models.CharField(max_length=5, blank=True, default='')
     student_id = models.CharField(max_length=25, null=True, blank=True)
+    full_name = models.CharField(max_length=255, default='', blank=False, null=False)
+    phone_no= models.CharField(max_length=20, default="")
     objects = UserProfileManager()
 
     class Meta:

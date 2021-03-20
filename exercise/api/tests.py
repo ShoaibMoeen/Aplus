@@ -1,7 +1,8 @@
 from django.test import TestCase
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APIClient
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+#from userprofile.models import user as User
 from course.models import Course, CourseInstance
 from exercise.models import LearningObjectCategory
 from userprofile.models import UserProfile

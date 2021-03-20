@@ -16,15 +16,19 @@ import diploma.urls
 import apps.urls
 import api.urls_v2
 import redirect_old_urls.urls
+from django.urls import path
 
 
 admin.autodiscover()
 
+
+
 #  Pay attention to the order the URL patterns will be matched!
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^shibboleth/', include(shibboleth_login.urls)),
+    #url(r'^shibboleth/', include(shibboleth_login.urls)),
     url('', include(social_django.urls, namespace='social')),
+    path('accounts/', include("allauth.urls")),
     url(r'^api/v(?P<version>(2))/', include(api.urls_v2)), # why version in url? doc/api_versioning.md
     url(r'^accounts/', include(userprofile.urls)),
     url(r'^diploma/', include(diploma.urls)),

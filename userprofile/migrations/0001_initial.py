@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 
 
+import django.contrib.auth.models
+import django.contrib.auth.validators
 from django.db import models, migrations
+import django.utils.timezone
 from django.conf import settings
+import uuid
 
 
 class Migration(migrations.Migration):
@@ -33,6 +37,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('lang', models.CharField(default=b'en_US', max_length=5)),
                 ('student_id', models.CharField(max_length=25, null=True, blank=True)),
+                # ('phone_no', models.CharField(max_length=20, default="")),
                 ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
             options={

@@ -2,6 +2,7 @@ from datetime import timedelta
 import logging
 
 from django.contrib.auth.models import User
+#from userprofile.models import user as User
 from django.urls import reverse
 from django.test import TestCase
 from django.test.client import Client

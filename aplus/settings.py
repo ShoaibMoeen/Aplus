@@ -10,7 +10,7 @@ BASE_DIR = dirname(dirname(abspath(__file__)))
 
 # Base options, commonly overridden in local_settings.py
 ##########################################################################
-DEBUG = False
+DEBUG = True
 SECRET_KEY = None
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -34,7 +34,7 @@ BRAND_DESCRIPTION = 'Virtual Learning Environment'
 BRAND_INSTITUTION_NAME = 'Aalto University'
 BRAND_INSTITUTION_NAME_FI = 'Aalto-yliopisto'
 
-WELCOME_TEXT = 'Welcome to B+ <small>modern learning environment</small>'
+WELCOME_TEXT = 'Welcome to A+ <small>modern learning environment</small>'
 SHIBBOLETH_TITLE_TEXT = 'Aalto University users'
 SHIBBOLETH_BODY_TEXT = 'Log in with your Aalto University user account by clicking on the button below. FiTech, Open University and programme students as well as staff members must log in here.'
 SHIBBOLETH_BUTTON_TEXT = 'Log in with Aalto account'
@@ -90,11 +90,14 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.humanize',
-
+    'django.contrib.sites',
     # 3rd party applications
     'bootstrapform',
     'rest_framework',
     'rest_framework.authtoken',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 
     # First party applications
     'inheritance',
@@ -112,9 +115,15 @@ INSTALLED_APPS = (
     'apps',
     'redirect_old_urls',
 
-    'js_jquery_toggle',
+    #'js_jquery_toggle',
     # 'django_colortag',
 )
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 # Different login options (may override in local_settings.py)
 ###########djan###############################################################
@@ -162,8 +171,8 @@ INSTALLED_APPS = (
 #INSTALLED_APPS += ('social_django',)
 #SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
 #SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
-SOCIAL_AUTH_URL_NAMESPACE = 'social'
-SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
+# SOCIAL_AUTH_URL_NAMESPACE = 'social'
+# SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 
 ##########################################################################
 
@@ -180,8 +189,18 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'aplus.urls'
+# LOGIN_ERROR_URL = "/accounts/login/"
+SITE_ID = 1
+# ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
+ACCOUNT_EMAIL_REQUIRED = True
 LOGIN_REDIRECT_URL = "/"
-LOGIN_ERROR_URL = "/accounts/login/"
+ACCOUNT_LOGOUT_REDIRECT_URL  = "/"
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_FORMS = { "signup": "userprofile.forms.MySignUpForm"}
+# AUTH_USER_MODEL= "userprofile.User"
 
 TEMPLATES = [
     {
@@ -220,14 +239,23 @@ WSGI_APPLICATION = 'aplus.wsgi.application'
 ##########################################################################
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': join(BASE_DIR, 'aplus.db'), # Or path to database file if using sqlite3.
-        'USER': '', # Not used with sqlite3.
-        'PASSWORD': '', # Not used with sqlite3.
-        'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '', # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql', # Add 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'postgres', # Or path to database file if using sqlite3.
+        'USER': 'postgres', # Not used with sqlite3.
+        'HOST': 'db', # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '5432', # Set to empty string for default. Not used with sqlite3.
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+#         'NAME': join(BASE_DIR, 'aplus_new.db'), # Or path to database file if using sqlite3.
+#         'USER': '', # Not used with sqlite3.
+#         'PASSWORD': '', # Not used with sqlite3.
+#         'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
+#         'PORT': '', # Set to empty string for default. Not used with sqlite3.
+#     }
+# }
 ##########################################################################
 
 # Cache (override in local_settings.py)
@@ -267,15 +295,16 @@ LOCALE_PATHS = (
 # )
 # STATIC_URL = '/static/'
 # STATIC_ROOT = join(BASE_DIR, 'static')
+
 import os
 # PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = '/static/'
 
 # Extra lookup directories for collectstatic to find static files
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
-    join(BASE_DIR, 'assets'),
 )
 
 
@@ -420,11 +449,11 @@ from os import environ
 from r_django_essentials.conf import *
 
 # Load settings from: local_settings, secret_key and environment
-update_settings_with_file(__name__,
-                          environ.get('APLUS_LOCAL_SETTINGS', 'local_settings'),
-                          quiet='APLUS_LOCAL_SETTINGS' in environ)
-update_settings_from_environment(__name__, 'DJANGO_') # FIXME: deprecated. was used with containers before, so keep it here for now.
-update_settings_from_environment(__name__, 'APLUS_')
+# update_settings_with_file(__name__,
+#                           environ.get('APLUS_LOCAL_SETTINGS', 'local_settings'),
+#                           quiet='APLUS_LOCAL_SETTINGS' in environ)
+#update_settings_from_environment(__name__, 'DJANGO_') # FIXME: deprecated. was used with containers before, so keep it here for now.
+#update_settings_from_environment(__name__, 'APLUS_')
 update_secret_from_file(__name__, environ.get('APLUS_SECRET_KEY_FILE', 'secret_key'))
 
 
@@ -443,15 +472,15 @@ if 'INSTALLED_LOGIN_APPS' in globals():
 use_cache_template_loader_in_production(__name__)
 
 # setup authentication backends based on installed_apps
-SOCIAL_AUTH = False
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-)
-if 'shibboleth_login' in INSTALLED_APPS:
-    AUTHENTICATION_BACKENDS += ('shibboleth_login.auth_backend.ShibbolethAuthBackend',)
-if 'social_django' in INSTALLED_APPS:
-    SOCIAL_AUTH = True
-    AUTHENTICATION_BACKENDS += ('social_core.backends.google.GoogleOAuth2',)
+#SOCIAL_AUTH = False
+# AUTHENTICATION_BACKENDS = (
+#     'django.contrib.auth.backends.ModelBackend',
+# )
+# if 'shibboleth_login' in INSTALLED_APPS:
+#     AUTHENTICATION_BACKENDS += ('shibboleth_login.auth_backend.ShibbolethAuthBackend',)
+# if 'social_django' in INSTALLED_APPS:
+#     SOCIAL_AUTH = True
+#     AUTHENTICATION_BACKENDS += ('social_core.backends.google.GoogleOAuth2',)
 
 
 

@@ -1,7 +1,8 @@
 import datetime
 import logging
 
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+#from userprofile.models import user as User
 from django.utils.formats import date_format
 from django.utils import timezone
 import lxml

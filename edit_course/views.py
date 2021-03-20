@@ -2,7 +2,8 @@ import html
 
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+#from userprofile.models import user as User
 from django.db import IntegrityError
 from django.http.response import Http404, HttpResponse
 from django.urls import reverse

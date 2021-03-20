@@ -1,7 +1,8 @@
 from urllib.parse import quote
 
 from django.conf import settings
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+#from userprofile.models import user as User
 from django.urls import reverse
 from django.test import TestCase, modify_settings, override_settings
 

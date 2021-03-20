@@ -1,5 +1,6 @@
 from django import forms
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+#from userprofile.models import user as User
 from django.utils.translation import gettext_lazy as _
 
 from aplus.api import api_reverse

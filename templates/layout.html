@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html class="transition-navbar-scroll top-navbar-xlarge bottom-footer" lang="en">
 {% load static %}
-
-{%block head%}
+{% load i18n %}
+{% block head %}
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,9 +11,11 @@
   <meta name="author" content="">
   <title>Tabir Theme</title>
 
+  <link href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
   <link href="{% static '/css/all.css' %}" rel="stylesheet">
   <link href="{% static '/css/app.css' %}" rel="stylesheet">
   <link href="{% static '/css/style.css' %}" rel="stylesheet" />
+  <link href="{% static '/css/myStyle.css' %}" rel="stylesheet" />
 </head>
 
 {%endblock%}
@@ -77,8 +79,12 @@
               </ul>
             </li>
           </ul> -->
-          <button class="navbar-btn btn btn-default btn-login" data-toggle="modal" data-target="#login-modal">Log In</a>
-            <button class="navbar-btn btn btn-primary">Sign Up</a>
+          {% if user.is_authenticated %}
+          <a class="navbar-btn btn btn-default btn-danger" data-toggle="modal" data-target="#logout-modal" >Log Out</a>
+          {% else %}
+          <a class="navbar-btn btn btn-default btn-login" data-toggle="modal" data-target="#login-modal">Log In</a>
+            <a class="navbar-btn btn btn-primary" data-toggle="modal" data-target="#signup-modal">Sign Up</a>
+            {% endif %}
         </div>
       </div>
     </div>
@@ -88,11 +94,234 @@
 
   {%block content%}
   {%endblock%}
-  <$PARTIAL VIEW BODY$>
+
+
+  <section class="footer-section">
+  <div>
+    <div class="row">
+      <div class="col-md-5 col-xs-12">
+        <div>
+          <a class="tabir-logo" href="/">
+            <img src="{% static '/images/tabir-logo.png' %}" alt="Tabir" />
+          </a>
+        </div>
+        <div class="view-more">
+          <a href="#">View More</a>
+        </div>
+      </div>
+      <div class="col-md-7 col-xs-12">
+        <div class="row">
+          <div class="col-md-4 col-xs-12">
+            <h4 class="text-headline">Quick Links</h4>
+            <ul class="list-unstyled">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 col-xs-12">
+            <h4 class="text-headline">Legal Stuff</h4>
+            <ul class="list-unstyled">
+              <li><a href="#">Disclaimer</a></li>
+              <li><a href="#">Financing</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 col-xs-12">
+            <h4 class="text-headline">Social</h4>
+            <ul class="list-unstyled">
+              <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
+              <li><a href="#"><i class="fa fa-instagram"></i> Instagram</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Logout Modal -->
+
+  <div class="modal fade" id="logout-modal">
+    <div class="modal-dialog">
+        <div class="v-cell">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="btn-dismiss" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                    <h5 class="modal-title">Are you sure you want to logout?</h5>
+                </div>
+                <div class="modal-body" style="margin-left: 70px">
+                    <form method="post" action="{% url 'account_logout' %}">
+                    {% csrf_token %}
+                    {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                    {% endif %}
+                    <button type="submit" class="navbar-btn btn btn-default btn-danger" >{% trans 'Sign Out' %}</button>
+                    <button class="navbar-btn btn btn-default btn-logout" data-dismiss="modal" >{% trans 'Cancel' %}</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+  <!--  Login Modal  -->
+
+  <div class="modal fade" id="login-modal">
+    <div class="modal-dialog">
+        <div class="v-cell">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="btn-dismiss" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                    <h5 class="modal-title">Login to your account</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="login" method="POST" action="{% url 'account_login' %}">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <input name="login" type="email" class="form-control round-input" placeholder="Email" />
+                      </div>
+                      <div class="form-group">
+                        <div class="login-password-input-container">
+                            <input type="password" name ="password" id= "login_pw" class="form-control round-input" placeholder="Password" />
+                            <button onclick='passwordViewToggle("login_pw")' ><i class="fa fa-eye"></i></button>
+                        </div>
+                      </div>
+                      {% if redirect_field_value %}
+                      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                      {% endif %}
+                      <div class="form-group">
+                        <a class="button secondaryAction" style="float:right;margin-bottom:10px;" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                      </div>
+                      <div class="form-group">
+                        <button class="btn btn-primary btn-full" type="submit" style="color: white; font-weight: 400;">Continue</button>
+                      </div>
+                    </form>
+                    
+                    <p class="text-center" style="color: #92929d;">OR</p>
+                    <div class="form-group">
+                        <button class="btn btn-default btn-login btn-full">
+                            <img src="{% static '/images/google.png' %}" style= "margin-right: 5px">
+                            Continue with Google
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-default btn-login btn-full">
+                            <img src="{% static '/images/fb.png' %}" style= "margin-right: 5px">
+                            Continue with Facebook
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer text-center">
+                    <div style="margin: 16px 0;">
+                        <a class="f-txt">Can't login?</a>
+                        <span class="dot"></span>
+                        <a class="f-txt hover-link" data-dismiss= "modal" data-toggle="modal" data-target="#signup-modal">Sign up for new user?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  {% block signup_modal %}
+<div class="modal fade" id="signup-modal">
+    <div class="modal-dialog">
+        <div class="v-cell">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="btn-dismiss" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                    <h5 class="modal-title">Create your free account</h5>
+                </div>
+                <div class="modal-body">
+                <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="full_name" class="form-control round-input" placeholder="Full Name" />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name= "email" class="form-control round-input" placeholder="Email" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name= "phone_no" class="form-control round-input" placeholder="Mobile Number" />
+                    </div>
+                    <div class="form-group">
+                        <div class="login-password-input-container">
+                            <input type="password" name="password1" id= "signup_pw" class="form-control round-input" placeholder="Create Password" />
+                            <button onclick='passwordViewToggle("signup_pw")'><i class="fa fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="login-password-input-container">
+                            <input type="password" name="password2" id= "signup_pw" class="form-control round-input" placeholder="Confirm Password" />
+                            <button onclick='passwordViewToggle("signup_pw")'><i class="fa fa-eye"></i></button>
+                        </div>
+                    </div>
+                    {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                    <div class="password-strength-container">
+                        <span class="rect"></span>
+                        <span class="rect"></span>
+                        <span class="rect"></span>
+                        <span class="rect"></span>
+                        <span class="rect"></span>
+                        <span>None</span>
+                    </div>
+
+                    <div class="registeration-notice-container">
+                        <p>By signing up, you confirm that you've read</p>
+                        <p>and accepted our <a>User Notice</a> and <a>Privacy Policy</a>.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-full" style="color: white;" type= "submit">Register</button>
+                    </div>
+                </form>                   
+
+                    
+                    <p class="text-center">OR</p>
+                    <div class="form-group">
+                        <button class="btn btn-default btn-login btn-full">
+                            <img src="{% static '/images/google.png' %}" style= "margin-right: 5px">
+                             Continue with Google
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-default btn-login btn-full">
+                            <img src="{% static '/images/fb.png' %}" style= "margin-right: 5px">
+                             Continue with Facebook
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer text-center">
+                    <a class="d-inline-block hover-link" style="margin: 16px 0;" data-dismiss= "modal" data-toggle="modal" data-target="#login-modal">Already have a Tabir account? Log in</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  {% endblock %}
 
   <script src= "{% static '/js/jquery.js' %}"></script>
   <script src="{% static '/js/bootstrap.js' %}"></script>
   <script src=" {% static '/js/site.js' %}"></script>
+
+  <script>
+  function passwordViewToggle(id) {
+  var x = document.getElementById(id);
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 </body>
 
 </html>

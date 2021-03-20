@@ -7,7 +7,7 @@ from course.models import Course, CourseInstance, CourseModule, \
     LearningObjectCategory
 from deviations.models import DeadlineRuleDeviation
 from exercise.exercise_models import ExerciseWithAttachment
-from userprofile.models import User
+#from userprofile.models import user as User
 
 
 class DeviationsTest(TestCase):

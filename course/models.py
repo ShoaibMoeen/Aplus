@@ -18,6 +18,7 @@ from django.utils import timezone
 from django.utils.functional import cached_property
 from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import User
 from djangocolortag.django_colortag.models import ColorTag
 
 from apps.models import BaseTab, BasePlugin
@@ -34,7 +35,7 @@ from lib.helpers import (
 from lib.remote_page import RemotePage, RemotePageException
 from lib.models import UrlMixin
 from lib.validators import generate_url_key_validator
-from userprofile.models import User, UserProfile, GraderUser
+from userprofile.models import UserProfile, GraderUser
 
 logger = logging.getLogger('aplus.course')
 

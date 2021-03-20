@@ -1,6 +1,7 @@
 from datetime import timedelta
 
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+#from userprofile.models import user as User
 from django.test import TestCase
 from django.utils import timezone
 

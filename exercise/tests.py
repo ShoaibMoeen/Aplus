@@ -5,7 +5,8 @@ from datetime import datetime, timedelta
 from io import BytesIO, StringIO
 
 from django.conf import settings
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+#from userprofile.models import user as User
 from django.core.exceptions import ValidationError
 from django.urls import reverse
 from django.test import TestCase

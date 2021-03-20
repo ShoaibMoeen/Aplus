@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from userprofile.models import User
+#from userprofile.models import user as User
 
 
 class Command(BaseCommand):

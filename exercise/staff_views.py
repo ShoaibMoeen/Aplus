@@ -2,7 +2,8 @@ import json
 import logging
 import time
 from django.contrib import messages
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+#from userprofile.models import user as User
 from django.core.exceptions import ValidationError
 from django.core.validators import URLValidator
 from django.db.models import F
