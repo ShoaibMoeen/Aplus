@@ -32,7 +32,7 @@ from .viewbase import CourseModuleBaseView, CourseInstanceMixin, EnrollableViewM
 
 class HomeView(UserProfileView):
     access_mode = ACCESS.ANONYMOUS
-    template_name = "course/index.html"
+    template_name = "course/index_latest.html"
 
     def get_common_objects(self):
         super().get_common_objects()

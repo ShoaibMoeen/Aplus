@@ -237,25 +237,25 @@ WSGI_APPLICATION = 'aplus.wsgi.application'
 # Database (override in local_settings.py)
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 ##########################################################################
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql', # Add 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'postgres', # Or path to database file if using sqlite3.
-        'USER': 'postgres', # Not used with sqlite3.
-        'HOST': 'db', # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '5432', # Set to empty string for default. Not used with sqlite3.
-    }
-}
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-#         'NAME': join(BASE_DIR, 'aplus_new.db'), # Or path to database file if using sqlite3.
-#         'USER': '', # Not used with sqlite3.
-#         'PASSWORD': '', # Not used with sqlite3.
-#         'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
-#         'PORT': '', # Set to empty string for default. Not used with sqlite3.
+#         'ENGINE': 'django.db.backends.postgresql', # Add 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+#         'NAME': 'postgres', # Or path to database file if using sqlite3.
+#         'USER': 'postgres', # Not used with sqlite3.
+#         'HOST': 'db', # Set to empty string for localhost. Not used with sqlite3.
+#         'PORT': '5432', # Set to empty string for default. Not used with sqlite3.
 #     }
 # }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': join(BASE_DIR, 'aplus_new.db'), # Or path to database file if using sqlite3.
+        'USER': '', # Not used with sqlite3.
+        'PASSWORD': '', # Not used with sqlite3.
+        'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '', # Set to empty string for default. Not used with sqlite3.
+    }
+}
 ##########################################################################
 
 # Cache (override in local_settings.py)

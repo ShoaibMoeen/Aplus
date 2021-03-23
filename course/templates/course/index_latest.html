@@ -1,0 +1,435 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load i18n %}
+{% load base %}
+{% load course %}
+
+{% block content %}
+<div class="body">
+    <div class="row home-section-container">
+        <div style="height: 100%;" class="col-md-6 ">
+            <label class="first-sec-label-1">Empowering Through <br><br>E-Learning</label>
+            <label class="first-sec-label-2">Tabir is a state of the art online learning system that helps you learn and
+                excel at exponential pace.</label>
+            <button class="btn btn-primary first-section-button"> Learn More</button>
+        </div>
+        <div style="height: 100%;" class="col-md-6">
+            <img src="{% static '/images/group-453.png' %}" />
+        </div>
+    </div>
+
+    <!--Categories Section-->
+    <div class="section">
+        <img class="bubble-top-left" src="{% static '/images/bubble-top-left.png' %}" />
+        <img class="bubble-bottom-right" src="{% static '/images/bubble-bottom-right.png' %}" />
+        <h1 class="section-heading">Categories</h1>
+        <div class="section-container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card category-card" style="position: relative;">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img src="{% static '/images/dummy-logo.png' %}">
+                            </div>
+                            <div class="col-sm-8">
+                                <h6 class="card-title card-title-ext">NUST Admissions</h6>
+                                <p class="card-text card-text-ext">Ulitmate solution for your dream of studing at University of Engineering and Technology.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card category-card" style="position: relative;">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img src="{% static '/images/dummy-logo.png' %}">
+                            </div>
+                            <div class="col-sm-8">
+                                <h6 class="card-title card-title-ext">NUST Admissions</h6>
+                                <p class="card-text card-text-ext">Ulitmate solution for your dream of studing at University of Engineering and Technology.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card category-card" style="position: relative;">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img src="{% static '/images/dummy-logo.png' %}">
+                            </div>
+                            <div class="col-sm-8">
+                                <h6 class="card-title card-title-ext">NUST Admissions</h6>
+                                <p class="card-text card-text-ext">Ulitmate solution for your dream of studing at University of Engineering and Technology.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card category-card" style="position: relative;">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img src="{% static '/images/dummy-logo.png' %}">
+                            </div>
+                            <div class="col-sm-8">
+                                <h6 class="card-title card-title-ext">NUST Admissions</h6>
+                                <p class="card-text card-text-ext">Ulitmate solution for your dream of studing at University of Engineering and Technology.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card category-card" style="position: relative;">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img src="{% static '/images/dummy-logo.png' %}">
+                            </div>
+                            <div class="col-sm-8">
+                                <h6 class="card-title card-title-ext">NUST Admissions</h6>
+                                <p class="card-text card-text-ext">Ulitmate solution for your dream of studing at University of Engineering and Technology.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card category-card" style="position: relative;">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img src="{% static '/images/dummy-logo.png' %}">
+                            </div>
+                            <div class="col-sm-8">
+                                <h6 class="card-title card-title-ext">NUST Admissions</h6>
+                                <p class="card-text card-text-ext">Ulitmate solution for your dream of studing at University of Engineering and Technology.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-default btn-default-ext mt-5">View All Categories</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Featured Program Section-->
+    <div class="section">
+        <h1 class="section-heading">Featured Programs</h1>
+        <div class="section-container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="feature-program-card">
+                        <div class="card-cover" style="background-image: url( {% static '/images/food1-full.jpg' %});">
+                            <img class="card-logo" src="{% static '/images/google@3x.png' %}" alt="Program Logo" />
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">UET ECAT Ultimate Preparation</h4>
+                            <p class="description">Preparation Module | Learning Box | Sample Test | Essential information
+                            </p>
+                        </div>
+                        <div class="card-footer clearfix">
+                            <div class="pull-left">
+                                <i class="fa fa-file-text-o"></i>
+                                <span>12 Module</span>
+                            </div>
+                            <div class="pull-right">
+                                <i class="fa fa-clock-o"></i>
+                                <span>50 Min / Session</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-program-card">
+                        <div class="card-cover" style="background-image: url( {% static '/images/place1-full.jpg' %});">
+                            <img class="card-logo" src="{% static '/images/fb@3x.png' %}" alt="Program Logo" />
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">High Scoring Preparation for AMC</h4>
+                            <p class="description">Preparation Module | Learning Box | Sample Test | Essential information
+                            </p>
+                        </div>
+                        <div class="card-footer clearfix">
+                            <div class="pull-left">
+                                <i class="fa fa-file-text-o"></i>
+                                <span>12 Module</span>
+                            </div>
+                            <div class="pull-right">
+                                <i class="fa fa-clock-o"></i>
+                                <span>50 Min / Session</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-program-card">
+                        <div class="card-cover" style="background-image: url({% static '/images/food1-full.jpg' %});">
+                            <img class="card-logo" src="{% static '/images/google@3x.png' %}" alt="Program Logo" />
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">UET ECAT Ultimate Preparation</h4>
+                            <p class="description">Preparation Module | Learning Box | Sample Test | Essential information
+                            </p>
+                        </div>
+                        <div class="card-footer clearfix">
+                            <div class="pull-left">
+                                <i class="fa fa-file-text-o"></i>
+                                <span>12 Module</span>
+                            </div>
+                            <div class="pull-right">
+                                <i class="fa fa-clock-o"></i>
+                                <span>50 Min / Session</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-program-card">
+                        <div class="card-cover" style="background-image: url({% static '/images/place1-full.jpg' %});">
+                            <img class="card-logo" src="{% static '/images/fb@3x.png' %}" alt="Program Logo" />
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">High Scoring Preparation for AMC</h4>
+                            <p class="description">Preparation Module | Learning Box | Sample Test | Essential information
+                            </p>
+                        </div>
+                        <div class="card-footer clearfix">
+                            <div class="pull-left">
+                                <i class="fa fa-file-text-o"></i>
+                                <span>12 Module</span>
+                            </div>
+                            <div class="pull-right">
+                                <i class="fa fa-clock-o"></i>
+                                <span>50 Min / Session</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-default btn-default-ext mt-5">View All Programs</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Best Seller Section-->
+    <div class="section">
+        <div class="section-container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h1 class="section-heading text-left mb-4">Best Seller</h1>
+                    <p class="section-description">Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . Lorem ipsum dolor sit amet, coectetur adipiscing elit.
+                        Suspendisse varius enim in eros . Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros .</p>
+                </div>
+                <div class="col-md-offset-1 col-md-7">
+                    <div class="seller-course-card-container">
+                        <img class="seller-course-card-image" src="{% static '/images/photodune-6745585-modern-creative-workspace-m.jpg' %}" />
+                        <div class="seller-course-card">
+                            <h1>Course Name</h1>
+                            <h2>Course deadline or offering</h2>
+                            <span class="separator"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Success Stories-->
+    <div class="section">
+        <img class="bubble-top-left" src="{% static '/images/oval-copy-4.png' %}" style="top: 100px;"/>
+        <img class="bubble-bottom-right" src="{% static '/images/bubble-bottom-right.png' %}" />
+        <h1 class="section-heading">Success Stories!</h1>
+        <div class="section-container">
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card feedback-card">
+                            <div class="card-body">
+                                <label class="success-card-txt ">
+                                    Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . Lorem ipsum dolor sit amet, coectetur adipiscing elit.
+                                Suspendisse varius enim in eros . 
+                                </label>
+                                <div class="clearfix" style="margin-top: 17px;">
+                                    <div class="pull-left" style="padding: 0 11px;">
+                                        <img class="feedback-img" src="{% static '/images/people/woman-6.jpg' %}" alt="Card Logo"/>
+        
+                                    </div>
+                                    <div class="pull-left" style="padding-left: 11px;"> 
+                                        <h4 class="success-card-heading">Benedikt Sufiyullin</h4>
+                                        <p style="color: #37474f;">Enrolled in UET Test Prep</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card feedback-card" style="background-color: rgba(152, 43, 190, 0.13);">
+                            <div class="card-body">
+                                <label class="success-card-txt ">
+                                    Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . Lorem ipsum dolor sit amet, coectetur adipiscing elit.
+                                Suspendisse varius enim in eros . 
+                                </label>
+                                <div class="clearfix" style="margin-top: 17px;">
+                                    <div class="pull-left" style="padding: 0 11px;">
+                                          <img class="feedback-img" src="{% static '/images/people/guy-6.jpg' %}" alt="Card Logo"/>
+        
+                                    </div>
+                                    <div class="pull-left" style="padding-left: 11px;"> 
+                                        <h4 class="success-card-heading">Benedikt Sufiyullin</h4>
+                                        <p style="color: #37474f;">Enrolled in UET Test Prep</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card feedback-card" style="background-color: rgba(226, 98, 98, 0.13);">
+                            <div class="card-body">
+                                <label class="success-card-txt ">
+                                    Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . Lorem ipsum dolor sit amet, coectetur adipiscing elit.
+                                Suspendisse varius enim in eros . 
+                                </label>
+                                <div class="clearfix" style="margin-top: 17px;">
+                                    <div class="pull-left" style="padding: 0 11px;">
+                                          <img class="feedback-img" src="{% static '/images/people/woman-8.jpg' %}" alt="Card Logo"/>
+        
+                                    </div>
+                                    <div class="pull-left" style="padding-left: 11px;"> 
+                                        <h4 class="success-card-heading">Benedikt Sufiyullin</h4>
+                                        <p style="color: #37474f;">Enrolled in UET Test Prep</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card feedback-card" style="background-color: rgba(70, 194, 125, 0.13);">
+                            <div class="card-body">
+                                <label class="success-card-txt ">
+                                    Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . Lorem ipsum dolor sit amet, coectetur adipiscing elit.
+                                Suspendisse varius enim in eros . 
+                                </label>
+                                <div class="clearfix" style="margin-top: 17px;">
+                                    <div class="pull-left" style="padding: 0 11px;">
+                                          <img class="feedback-img" src="{% static '/images/people/guy-3.jpg' %}" alt="Card Logo"/>
+        
+                                    </div>
+                                    <div class="pull-left" style="padding-left: 11px;"> 
+                                        <h4 class="success-card-heading">Benedikt Sufiyullin</h4>
+                                        <p style="color: #37474f;">Enrolled in UET Test Prep</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card feedback-card" style="background-color: rgba(67, 77, 144, 0.13);">
+                            <div class="card-body">
+                                <label class="success-card-txt ">
+                                    Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . Lorem ipsum dolor sit amet, coectetur adipiscing elit.
+                                Suspendisse varius enim in eros . 
+                                </label>
+                                <div class="clearfix" style="margin-top: 17px;">
+                                    <div class="pull-left" style="padding: 0 11px;">
+                                          <img class="feedback-img" src="{% static '/images/people/woman-4.jpg' %}" alt="Card Logo"/>
+        
+                                    </div>
+                                    <div class="pull-left" style="padding-left: 11px;"> 
+                                        <h4 class="success-card-heading">Benedikt Sufiyullin</h4>
+                                        <p style="color: #37474f;">Enrolled in UET Test Prep</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card feedback-card" style="background-color: rgba(231, 153, 65, 0.13);">
+                            <div class="card-body">
+                                <label class="success-card-txt ">
+                                    Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . Lorem ipsum dolor sit amet, coectetur adipiscing elit.
+                                Suspendisse varius enim in eros . 
+                                </label>
+                                <div class="clearfix" style="margin-top: 17px;">
+                                    <div class="pull-left" style="padding: 0 11px;">
+                                          <img class="feedback-img" src="{% static '/images/people/guy-9.jpg' %}" alt="Card Logo"/>
+        
+                                    </div>
+                                    <div class="pull-left" style="padding-left: 11px;"> 
+                                        <h4 class="success-card-heading">Benedikt Sufiyullin</h4>
+                                        <p style="color: #37474f;">Enrolled in UET Test Prep</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+   
+    <!--Our Partner-->
+   <div class="section" style="background-color: #f5f7fc;">
+        <h1 class="section-heading section-heading-ext"> Our Partners</h1>   
+        <div class="section-container">
+            <div class="text-center">
+                <h5 style="font-weight: 400;">We work with</h5>
+                <p class="section-container-p ">Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . 
+                    Lorem ipsum dolor sit amet, coectetur adipiscing elit. Suspendisse varius enim in eros . </p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-right">
+                    <div class="partner-card text-center" style="vertical-align: middle;">
+                        <img class="partner-card-img" src="{% static '/images/partner-1.png' %}"/>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="partner-card text-center">
+                        <img class="partner-card-img" src="{% static '/images/partner-2.png' %}"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="partner-card text-center">
+                        <img class="partner-card-img" src="{% static '/images/partner-3.png' %}"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-right">
+                    <div class="partner-card text-center">
+                        <img class="partner-card-img" src="{% static '/images/partner-2.png' %}"/>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="partner-card text-center">
+                        <img class="partner-card-img" src="{% static '/images/partner-3.png' %}"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="partner-card text-center">
+                        <img class="partner-card-img" src="{% static '/images/partner-1.png' %}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+
+   <!--Free Trail-->
+   <div class="section">
+       <div class="section-container" style="text-align: center;">
+        <div class="trail-inner-div">
+            <h1>
+                Join Today and Get a FREE Trial
+            </h1>
+            <h4>No payment required, just sign up and get the trail</h4>
+            <div class="row" style="margin-top: 50px;">
+                <button class="btn btn-default trail-inner-div-btn1" > Sign Up Now</button>
+                <button class="btn btn-primary trail-inner-div-btn2">Watch Demo</button>
+            </div>
+        </div>
+       </div>
+
+   </div>
+</div>
+
+{% endblock %}
