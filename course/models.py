@@ -44,6 +44,11 @@ with open(finders.find('pseudonym.json')) as json_file:
     DATA = json.load(json_file)
 
 
+class Category(models.Model):
+
+    name= models.CharField(max_length=255)
+    description= models.CharField(max_length=1024)
+
 class Course(UrlMixin, models.Model):
     """
     Course model represents a course in a university. A course has a name and an
@@ -57,6 +62,7 @@ class Course(UrlMixin, models.Model):
         help_text=_("Input an URL identifier for this course."))
     teachers = models.ManyToManyField(UserProfile,
         related_name="teaching_courses", blank=True)
+    category= models.ForeignKey('Category', on_delete=models.SET_NULL,null=True, related_name='course_category', default= "")
 
     def __str__(self):
         return "{} {}".format(self.code, self.name)

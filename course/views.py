@@ -24,7 +24,7 @@ from lib.helpers import settings_text, remove_query_param_from_url
 from lib.viewbase import BaseTemplateView, BaseRedirectMixin, BaseFormView, BaseView, BaseRedirectView
 from userprofile.viewbase import UserProfileView
 from .forms import GroupsForm, GroupSelectForm
-from .models import CourseInstance, Course, Enrollment
+from .models import CourseInstance, Course, Enrollment,Category
 from .permissions import EnrollInfoVisiblePermission
 from .renders import group_info_context
 from .viewbase import CourseModuleBaseView, CourseInstanceMixin, EnrollableViewMixin, CourseMixin
@@ -67,13 +67,18 @@ class HomeView(UserProfileView):
         all_instances = CourseInstance.objects.get_visible(user).filter(ending_time__gte=end_threshold)
         all_instances = [c for c in all_instances if c not in my_instances]
         
+        categories = Category.objects.all()
+        for c in categories:
+            print(c.name)
+        self.categories = categories
         self.all_instances = all_instances
         self.my_instances = my_instances
         self.is_logged_in = is_logged_in
 
-        self.note("welcome_text", 
-            "internal_user_label", 
+        self.note("welcome_text",
+            "internal_user_label",
             "external_user_label",
+            "categories",
             "my_instances",
             "all_instances",
             "is_logged_in",

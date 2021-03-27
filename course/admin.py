@@ -11,6 +11,7 @@ from course.models import (
     LearningObjectCategory,
     UserTag,
     UserTagging,
+    Category,
 )
 from userprofile.models import UserProfile
 
@@ -78,6 +79,7 @@ class LearningObjectCategoryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Course, CourseAdmin)
+admin.site.register(Category)
 admin.site.register(CourseInstance, CourseInstanceAdmin)
 admin.site.register(Enrollment, EnrollmentAdmin)
 admin.site.register(StudentGroup)
