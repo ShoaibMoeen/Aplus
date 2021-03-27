@@ -5,6 +5,7 @@
 {% load course %}
 
 {% block content %}
+{% if not user.is_authenticated %}
 <div class="body">
     <div class="row home-section-container">
         <div style="height: 100%;" class="col-md-6 ">
@@ -368,5 +369,143 @@
 
    </div>
 </div>
+{% else %}
+<div>
+    <div class="row">
+        <div class="col-md-8 u-portal-activity-section">
+            <div class="welcome-section-container">
+                <h3>Welcome to your dashboard! </h3>
+                <div class="alert alert-info alert-dismissible" role="alert" >
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    Welcome to Tabir. This is your main dashboard where you will see a quick overview of the courses you are enrolled in, 
+                    important announements and suggestions just for you. 
+                  </div>
+            </div>
+            <div class="suggestions-container">
+                <h4>Suggested for you</h4>
+                <h5 class="portal-h5">Categories</h5>
+                <div class="row">
+                    {% for category in categories %}
+                        <div class="col-md-6">
+                            <div class="card category-card" style="margin-bottom: 15px;">
+                                
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <img src="{% static '/images/dummy-logo.png' %}">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <h6 class="card-title card-title-ext">{{category.name}}</h6>
+                                        <p class="card-text card-text-ext">{{category.description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <a href="#" style="text-decoration: none;">VIEW ALL CATEGORIES</a>
+                <h5 class="portal-h5">Courses</h5>
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-md-5">
+                        <div class="feature-program-card">
+                            <div class="card-cover" style="background-image: url({% static '/images/food1-full.jpg' %});">
+                                <img class="card-logo" src="{% static '/images/google@3x.png' %}" alt="Program Logo" />
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">UET ECAT Ultimate Preparation</h4>
+                                <p class="description">Preparation Module | Learning Box | Sample Test | Essential information
+                                </p>
+                            </div>
+                            <div class="card-footer clearfix">
+                                <div class="pull-left">
+                                    <i class="fa fa-file-text-o"></i>
+                                    <span>12 Module</span>
+                                </div>
+                                <div class="pull-right">
+                                    <i class="fa fa-clock-o"></i>
+                                    <span>50 Min / Session</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="feature-program-card">
+                            <div class="card-cover" style="background-image: url({% static '/images/place1-full.jpg' %});">
+                                <img class="card-logo" src="{% static '/images/fb@3x.png' %}" alt="Program Logo" />
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">High Scoring Preparation for AMC</h4>
+                                <p class="description">Preparation Module | Learning Box | Sample Test | Essential information
+                                </p>
+                            </div>
+                            <div class="card-footer clearfix">
+                                <div class="pull-left">
+                                    <i class="fa fa-file-text-o"></i>
+                                    <span>12 Module</span>
+                                </div>
+                                <div class="pull-right">
+                                    <i class="fa fa-clock-o"></i>
+                                    <span>50 Min / Session</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <a href="#" style="text-decoration: none;">VIEW ALL COURSES</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="notice-b-container">
+                <h3>Notice Board</h3>
+                <div class="card mb-3 announce-card">
+                    <div class="card-body">
+                        <img src="{% static '/images/pin-copy.svg' %}" style="float: right;">
+                        <h5 class="card-title notice-anounce-card-title">Important Announcement!</h5>
+                        <p class="card-text notice-anounce-card-p">How many free autoresponders have you tried? 
+                            Really how many? And how many emails did you get through using them? How do you know?. 
+                            How many free autoresponders have you tried?
+                        </p>
+                    </div>
+                  </div>
+                  <div class="card mb-3 announce-card" style="background-color: #dbf8e7;">
+                    <div class="card-body">
+                        <img src="{% static '/images/pin-copy.svg' %}" style="float: right;">
+                        <h5 class="card-title notice-anounce-card-title" >Free Course!</h5>
+                        <p class="card-text notice-anounce-card-p">How many free autoresponders have you tried? 
+                          Really how many? And how many emails did you get through using them? 
+                        </p>
+                    </div>
+                  </div>
+            </div>
+            <div class="notice-b-container">
+                <h3 style="margin-top: 30px;">Help Article</h3>
+                <button class="btn btn-default help-btn">
+                    <div>
+                        <img src="{% static '/images/component-icon-ic.png' %}"/>
+                    </div>
+                    Getting Started
+                </button>
+                <button class="btn btn-default help-btn">
+                    <div>
+                        <img src="{% static '/images/component-icon-ic-file.png' %}"/>
+                    </div>
+                    News & Update
+                </button>
+                <button class="btn btn-default help-btn">
+                    <div>
+                        <img src="{% static '/images/component-icon-ic-friends.png' %}"/>
+                    </div>
+                    Community
+                </button>
+            </div>
+        </div>
+    
+    </div>
+</div>
+<script>
+    setTimeout(() => document.getElementById('dashboard-menu').className = 'active');
+</script>
+{% endif %}
 
 {% endblock %}

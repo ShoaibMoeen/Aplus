@@ -68,8 +68,6 @@ class HomeView(UserProfileView):
         all_instances = [c for c in all_instances if c not in my_instances]
         
         categories = Category.objects.all()
-        for c in categories:
-            print(c.name)
         self.categories = categories
         self.all_instances = all_instances
         self.my_instances = my_instances
